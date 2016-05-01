@@ -70,12 +70,24 @@
         android:singleLine="true"/>
 
     <Button
-        android:id="@+id/email_sign_in_button"
+    android:id="@+id/email_sign_in_button"
+    style="?android:textAppearanceSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:text="@string/action_sign_in"
+    android:textStyle="bold"
+    android:onClick="sendSomewhere"
+    android:layout_gravity="center_horizontal"
+    android:textColor="#1e4dd3" />
+
+    <Button
+        android:id="@+id/grid_button"
         style="?android:textAppearanceSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/action_sign_in"
+        android:text="@string/grid_button"
         android:textStyle="bold"
         android:onClick="sendSomewhere"
         android:layout_gravity="center_horizontal"

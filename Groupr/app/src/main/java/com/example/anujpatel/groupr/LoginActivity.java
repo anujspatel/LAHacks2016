@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -50,9 +51,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
      */
-    private static final ArrayList<String> DUMMY_CREDENTIALS = new ArrayList<String>(){
-            //"foo@example.com:hello", "bar@example.com:world"
-    };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -74,6 +72,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             Intent intent = new Intent(this, FinishSignUp.class);
             startActivity(intent);
         }
+    }
+    public void sendToGrid(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -102,6 +104,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             public void onClick(View view) {
                 attemptLogin();
                 sendSomewhere(view);
+            }
+        });
+
+        Button gridButton = (Button) findViewById(R.id.grid_button);
+        gridButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendToGrid(view);
             }
         });
 
@@ -200,9 +210,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
+            SharedPreferences prefs = getSharedPreferences("MyPrefsFile", MODE_PRIVATE);
             mAuthTask = new UserLoginTask(email, password);
-            if (DUMMY_CREDENTIALS.contains(email + ":" + password)) {
-                sendToDiscovery = true;
+            if (prefs.getString("email_address", null) != null) {
+                if (prefs.getString("email_address", null).equals(mEmailView)) {
+                    sendToDiscovery = true;
+                }
             } else {
                 sendToSignUp = true;
             }
@@ -333,19 +346,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             } catch (InterruptedException e) {
                 return false;
             }
-
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
+            SharedPreferences prefs = getSharedPreferences("MyPrefsFile", MODE_PRIVATE);
+            if (prefs.getString("email_address", null) != null) {
+                if (prefs.getString("email_address", null).equals(mEmail)) {
                     sendToDiscovery = true;
-                    return pieces[1].equals(mPassword);
+                    if (prefs.getString("password", null).equals(mEmail)) {
+                        return prefs.getString("password", null).equals(mPassword);
+                    }
                 }
+            } else {
+                sendToSignUp = true;
             }
-
-            sendToSignUp = true;
             // TODO: register the new account here.
-            DUMMY_CREDENTIALS.add(mEmail + ":" + mPassword);
             return true;
         }
 

@@ -13,20 +13,18 @@
     tools:showIn="@layout/activity_finish_sign_up">
 
     <EditText
-        android:id="@+id/FirstName"
+        android:id="@+id/first_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/prompt_first_name"
         android:imeActionId="@+id/login"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionUnspecified"
-        android:inputType="textPassword"
         android:maxLines="1"
         android:singleLine="true"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/last_name"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="63dp" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/last_name"
@@ -36,10 +34,9 @@
         android:imeActionId="@+id/login"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionUnspecified"
-        android:inputType="textPassword"
         android:maxLines="1"
         android:singleLine="true"
-        android:layout_below="@+id/FirstName"
+        android:layout_above="@+id/email_address"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -51,10 +48,9 @@
         android:imeActionId="@+id/login"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionUnspecified"
-        android:inputType="textPassword"
         android:maxLines="1"
         android:singleLine="true"
-        android:layout_below="@+id/last_name"
+        android:layout_above="@+id/email_address_confirm"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -66,10 +62,10 @@
         android:imeActionId="@+id/login"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionUnspecified"
-        android:inputType="textPassword"
+        android:inputType="textEmailAddress"
         android:maxLines="1"
         android:singleLine="true"
-        android:layout_below="@+id/email_address"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -78,10 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/prompt_password_sign_up"
-        android:imeActionId="@+id/login"
-        android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionUnspecified"
-        android:inputType="textPassword"
         android:maxLines="1"
         android:singleLine="true"
         android:layout_below="@+id/email_address_confirm"
@@ -90,15 +83,17 @@
 
     <Button
         android:id="@+id/register_button"
-        style="?android:textAppearanceSmall"
+        style="?android:textAppearance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/register"
         android:textStyle="bold"
+        android:textSize="9pt"
         android:onClick="sendSomewhere"
-        android:layout_below="@+id/password_sign_up"
+        android:layout_below="@+id/email_address_confirm"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="33dp" />
 
 
 </RelativeLayout>

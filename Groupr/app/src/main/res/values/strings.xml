@@ -10,7 +10,8 @@
     <string name="prompt_email_address_confirm">Email address (again):</string>
     <string name="prompt_password_sign_up">Password:</string>
     <string name="register">Sign me up!</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in">Sign in/Register</string>
+    <string name="grid_button">Discovery!</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
@@ -20,5 +21,5 @@
         completions."
     </string>
     <string name="title_activity_discovery">Discovery</string>
-    <string name="title_activity_finish_sign_up">FinishSignUp</string>
+    <string name="title_activity_finish_sign_up">Finish Sign Up</string>
 </resources>
