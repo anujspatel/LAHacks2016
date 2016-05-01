@@ -1,1 +1,2 @@
-# LAHacks2016
+# LAHacks2016 - Groupr
+
